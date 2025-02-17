@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
-import '../../../widgets/common/custom_button.dart';
-import '../../../widgets/common/custom_tile.dart';
-import '../../../widgets/common/custom_text_field.dart';
+import '../../widgets/common/custom_button.dart';
+import '../../widgets/common/custom_text_field.dart';
+import '../../widgets/common/custom_tile.dart';
 
 class LoginScreen extends StatefulWidget {
   final void Function()? onTap;
