@@ -1,3 +1,5 @@
+import 'package:baby_shop_hub/data/services/auth_service.dart';
+import 'package:baby_shop_hub/presentation/screens/auth/register_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../widgets/common/custom_button.dart';
@@ -5,17 +7,20 @@ import '../../widgets/common/custom_text_field.dart';
 import '../../widgets/common/custom_tile.dart';
 
 class LoginScreen extends StatefulWidget {
-  final void Function()? onTap;
-  const LoginScreen({super.key, required this.onTap});
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  // get auth service
+  final authService = AuthService();
+
+
   // Controllers for text fields
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController passWordController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   // Toggle for password visibility
   bool isOpen = true;
@@ -26,8 +31,38 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  void _signIn() {
-    // TODO: Implement your sign in logic here.
+  void _signIn() async{
+    // prepare data
+    final email = emailController.text;
+    final password = passwordController.text;
+
+    //checks if email and passwords field are empty 
+    if (email.isEmpty || password.isEmpty) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          "Please fill in all fields",
+          style: TextStyle(color: AppColors.error),
+        ), 
+      ),
+    );
+    return;
+  }
+
+    // attempt login...
+    try {
+      await authService.signInWithEmailPassword(email, password);
+       // Navigate to HomeScreen after successful login
+        if (mounted) {
+          Navigator.pushReplacementNamed(context, "/home");
+        }
+    } 
+    // catch any errors...
+    catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Error: $e",style: TextStyle(color: AppColors.error))));
+      }
+    }
   }
 
   /// Builds the social sign-in icons using a Wrap for responsiveness.
@@ -92,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 50),
                 // App logo
                 Image.asset(
-                  "assets/icon/Logo.png", // Adjust asset path if needed
+                  "assets/images/login.png",
                   height: 200,
                   fit: BoxFit.contain,
                 ),
@@ -120,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   alignment: Alignment.centerRight,
                   children: [
                     Textfields(
-                      controller: passWordController,
+                      controller: passwordController,
                       labelText: "Password",
                       obscureText: isOpen,
                     ),
@@ -192,9 +227,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("You're not a member? "),
+                    const Text("Don't have an account? "),
                     GestureDetector(
-                      onTap: widget.onTap,
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterScreen())),
                       child: const Text(
                         "Register.",
                         style: TextStyle(
