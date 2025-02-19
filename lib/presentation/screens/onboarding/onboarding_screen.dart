@@ -30,7 +30,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Future<void> _completeOnboarding() async {
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (context) => LoginScreen(onTap: (){},),
+        builder: (context) => LoginScreen(),
       ),
     );
   }
