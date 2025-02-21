@@ -1,5 +1,5 @@
 import 'package:baby_shop_hub/data/services/auth_service.dart';
-import 'package:baby_shop_hub/presentation/screens/auth/login_screen.dart';
+import 'package:baby_shop_hub/presentation/widgets/specific/layout.dart';
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../widgets/common/custom_button.dart';
@@ -237,7 +237,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   children: [
                     const Text("Already have an account? "),
                     GestureDetector(
-                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen())),
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Layout())),
                       child: const Text(
                         "Sign In.",
                         style: TextStyle(
