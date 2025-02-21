@@ -8,8 +8,8 @@ authenticated users -> Slash Screen -> Home Screen(Main Screen)
 
 */
 
-import 'package:baby_shop_hub/presentation/screens/home/home_screen.dart';
 import 'package:baby_shop_hub/presentation/screens/onboarding/onboarding_screen.dart';
+import 'package:baby_shop_hub/presentation/widgets/specific/layout.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -32,7 +32,7 @@ class AuthGate extends StatelessWidget {
                 final session = snapshot.hasData ? snapshot.data!.session : null;
 
                 if(session != null){
-                    return HomeScreen();
+                    return Layout();
                 } else{
                     return OnboardingScreen();
                 }
