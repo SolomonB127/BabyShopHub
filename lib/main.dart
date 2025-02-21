@@ -1,4 +1,3 @@
-import 'package:baby_shop_hub/presentation/screens/home/home_screen.dart';
 import 'package:baby_shop_hub/presentation/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -35,9 +34,6 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
-      routes: {
-        "/home": (context) => const HomeScreen(),
-      },
     );
   }
 }
