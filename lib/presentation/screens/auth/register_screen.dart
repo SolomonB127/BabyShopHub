@@ -1,4 +1,5 @@
 import 'package:baby_shop_hub/data/services/auth_service.dart';
+import 'package:baby_shop_hub/presentation/screens/auth/login_screen.dart';
 import 'package:baby_shop_hub/presentation/widgets/specific/layout.dart';
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
@@ -47,6 +48,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
     // attempt signup...
     try {
       await authService.signUpWithEmailPassword(email, password);
+
+      if (mounted) {
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Layout()));
+        }
 
       // pop page after successful signup
       // ignore: use_build_context_synchronously
@@ -237,7 +242,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   children: [
                     const Text("Already have an account? "),
                     GestureDetector(
-                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Layout())),
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen())),
                       child: const Text(
                         "Sign In.",
                         style: TextStyle(
