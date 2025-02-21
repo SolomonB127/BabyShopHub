@@ -1,5 +1,6 @@
 import 'package:baby_shop_hub/data/services/auth_service.dart';
 import 'package:baby_shop_hub/presentation/screens/auth/register_screen.dart';
+import 'package:baby_shop_hub/presentation/widgets/specific/layout.dart';
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../widgets/common/custom_button.dart';
@@ -54,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
       await authService.signInWithEmailPassword(email, password);
        // Navigate to HomeScreen after successful login
         if (mounted) {
-          Navigator.pushReplacementNamed(context, "/home");
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Layout()));
         }
     } 
     // catch any errors...
