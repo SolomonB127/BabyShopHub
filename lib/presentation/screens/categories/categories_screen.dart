@@ -1,4 +1,5 @@
 import 'package:baby_shop_hub/core/theme/app_colors.dart';
+import 'package:baby_shop_hub/presentation/screens/categories/category_filters.dart';
 import 'package:baby_shop_hub/presentation/widgets/common/search_tile.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,7 @@ class CategoriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.surface,
-        body: SafeArea(
+      body: SafeArea(
         child: Column(
           children: [
             Container(
@@ -23,7 +24,7 @@ class CategoriesScreen extends StatelessWidget {
                       hintText: "Search Here",
                       icon: IconButton(
                         onPressed: () {
-                           // TODO - Add search functionality here.
+                          // TODO - Add search functionality here.
                         },
                         icon: const Icon(Icons.search),
                         color: Colors.grey,
@@ -31,7 +32,6 @@ class CategoriesScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 16),
-            
                   Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
@@ -47,14 +47,17 @@ class CategoriesScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Center(
-                  child: Text(
-                    "Featured Categories",
-                    style: TextStyle(fontSize: 18),
+                child: Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Flexible(child: CategoryFilters()), // Restricts width
+                      // SizedBox(width: 16), // Adds spacing
+                      // Text("hi"),
+                    ],
                   ),
                 ),
               ),
@@ -63,6 +66,5 @@ class CategoriesScreen extends StatelessWidget {
         ),
       ),
     );
-
   }
 }
