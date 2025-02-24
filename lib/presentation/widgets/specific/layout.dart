@@ -5,9 +5,6 @@ import 'package:baby_shop_hub/presentation/screens/home/home_screen.dart';
 import 'package:baby_shop_hub/presentation/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 
-
-/// A widget that manages the overall layout of the app,
-/// including the bottom navigation bar and corresponding pages.
 class Layout extends StatefulWidget {
   const Layout({super.key});
 
@@ -16,30 +13,30 @@ class Layout extends StatefulWidget {
 }
 
 class _LayoutState extends State<Layout> {
-  /// Index of the currently selected page.
   int _selectedIndex = 0;
 
-  /// List of pages corresponding to the bottom navigation items.
-  final List<Widget> _pages = [
-    const HomeScreen(),         // Home/Products page.
-    const CategoriesScreen(),       // Categories Selection page.
-    const ProfileScreen(),  // Account page.
-    const HelpScreen(),        // Help/Services page.
-  ];
-
-  /// Handles the bottom navigation bar item tap by updating the selected index.
   void _onNavigationItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
+  // Update the pages list to pass the callback to HomeScreen
+  List<Widget> get _pages => [
+        HomeScreen(
+          onSeeMore: () {
+            _onNavigationItemTapped(1);
+          },
+        ),
+        const CategoriesScreen(),
+        const ProfileScreen(),
+        const HelpScreen(),
+      ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Display the currently selected page.
       body: _pages[_selectedIndex],
-      // Bottom Navigation Bar for page switching.
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onNavigationItemTapped,
