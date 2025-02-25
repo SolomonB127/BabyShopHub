@@ -4,6 +4,7 @@ import 'package:baby_shop_hub/presentation/widgets/specific/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:baby_shop_hub/data/services/product_service.dart';
 import '../../../core/models/products.dart';
+import 'package:baby_shop_hub/presentation/widgets/common/cart_icon.dart'; // Import the dedicated CartIcon
 
 class HomeScreen extends StatefulWidget {
   final VoidCallback onSeeMore;
@@ -59,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            // SEARCH BAR
+            // SEARCH BAR & CART ICON
             Container(
               width: double.infinity,
               color: AppColors.primaryLight,
@@ -79,17 +80,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   const SizedBox(width: 16),
-                  Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: const Icon(
-                      Icons.shopping_cart,
-                      color: Colors.black,
-                    ),
-                  ),
+                  // Replace the original container with our dedicated CartIcon widget.
+                  const CartIcon(),
                 ],
               ),
             ),
@@ -101,9 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 future: _products,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(
-                        child:
-                            CircularProgressIndicator()); // Show loader when fetching data
+                    return const Center(child: CircularProgressIndicator());
                   }
 
                   if (snapshot.hasError) {
