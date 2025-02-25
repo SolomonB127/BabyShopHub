@@ -5,6 +5,7 @@ import 'package:baby_shop_hub/data/services/product_service.dart';
 import 'package:flutter/material.dart';
 import '../../../core/models/products.dart';
 import 'package:baby_shop_hub/presentation/widgets/specific/product_card.dart';
+import 'package:baby_shop_hub/presentation/widgets/common/cart_icon.dart'; // Import the dedicated CartIcon
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});
@@ -77,17 +78,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                     ),
                   ),
                   const SizedBox(width: 16),
-                  Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: const Icon(
-                      Icons.shopping_cart,
-                      color: Colors.black,
-                    ),
-                  ),
+                  // Replace the hardcoded cart icon with the dedicated CartIcon widget.
+                  const CartIcon(),
                 ],
               ),
             ),
