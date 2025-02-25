@@ -1,6 +1,8 @@
 import 'package:baby_shop_hub/core/models/products.dart';
 import 'package:baby_shop_hub/core/theme/app_colors.dart';
+import 'package:baby_shop_hub/provider/cart_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -52,22 +54,34 @@ class ProductCard extends StatelessWidget {
             // ADD TO CART BUTTON
             GestureDetector(
               onTap: () {
+                // Add product to cart using the provider
+                Provider.of<CartProvider>(context, listen: false).addItem(product);
 
+                // Optionally, show a snackbar confirmation
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('${product.name} added to cart'),
+                    duration: const Duration(seconds: 1),
+                  ),
+                );
               },
               child: Container(
-                        padding: const EdgeInsets.all(10),
-                        
-                        decoration: BoxDecoration(
-                  color: AppColors.primary, borderRadius: BorderRadius.circular(8)),
-                        child: Center(
-                child: Text(
-                  "Add to Cart",
-                  style: const TextStyle(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: AppColors.primary,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Center(
+                  child: Text(
+                    "Add to Cart",
+                    style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 16),
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
-                        )),
+              ),
             ),
           ],
         ),
