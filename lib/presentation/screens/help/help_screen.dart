@@ -1,5 +1,6 @@
 import 'package:baby_shop_hub/core/theme/app_colors.dart';
 import 'package:baby_shop_hub/presentation/screens/help/help-center/help_center.dart';
+import 'package:baby_shop_hub/presentation/screens/privacy-policy/privacy_policy.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/specific/list_item.dart';
@@ -43,7 +44,9 @@ class HelpScreen extends StatelessWidget {
             ListItem(title: 'Help Center', onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const HelpCenter()));
             },),
-            const ListItem(title: 'Privacy Policy'),
+            ListItem(title: 'Privacy Policy',onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const PrivacyPolicy()));
+            },),
             const Divider(thickness: 1, height: 20),
             const SectionTitle(title: 'Settings'),
             const ListItem(title: 'Country', trailingText: 'NIGERIA'),
