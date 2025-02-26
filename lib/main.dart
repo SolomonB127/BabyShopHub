@@ -4,6 +4,7 @@ import 'package:baby_shop_hub/presentation/screens/help/contact_us/contact_us.da
 import 'package:baby_shop_hub/presentation/screens/help/payment_options/payment_options.dart';
 import 'package:baby_shop_hub/presentation/screens/help/returns_exchnages/returns_exchanges.dart';
 import 'package:baby_shop_hub/presentation/screens/splash/splash_screen.dart';
+import 'package:baby_shop_hub/presentation/screens/terms-conditions/terms_conditions.dart';
 import 'package:baby_shop_hub/provider/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -53,6 +54,7 @@ class MainApp extends StatelessWidget {
         '/returns': (context) => const ReturnsExchangesScreen(),
         '/payment': (context) => const PaymentOptionsScreen(),
         '/contact': (context) => const ContactUsScreen(),
+        '/terms': (context) => const TermsConditions(),
       },
     );
   }
