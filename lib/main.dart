@@ -6,6 +6,7 @@ import 'package:baby_shop_hub/presentation/screens/help/returns_exchnages/return
 import 'package:baby_shop_hub/presentation/screens/splash/splash_screen.dart';
 import 'package:baby_shop_hub/presentation/screens/terms-conditions/terms_conditions.dart';
 import 'package:baby_shop_hub/provider/cart_provider.dart';
+import 'package:baby_shop_hub/provider/order_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +34,8 @@ void main() async {
 
   runApp(
     MultiProvider(providers: [
-      ChangeNotifierProvider(create: (_) => CartProvider())
+      ChangeNotifierProvider(create: (_) => CartProvider()),
+      ChangeNotifierProvider(create: (_) => OrderProvider()),
     ],
       child: const MainApp(),
     )
