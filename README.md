@@ -167,18 +167,18 @@ BabyShopHub is built using a layered architecture:
 - **Editing Cart:** Update quantities or remove items as needed.
 
 ### Checkout Process
--**Order Review:** Before confirming, review the complete order summary.
--**Payment Processing:** Proceed with the dummy payment system integrated into the app.
--**Confirmation:** Receive an order confirmation message with a detailed summary of your purchase.
+- **Order Review:** Before confirming, review the complete order summary.
+- **Payment Processing:** Proceed with the dummy payment system integrated into the app.
+- **Confirmation:** Receive an order confirmation message with a detailed summary of your purchase.
 
 ### Order History & Tracking (User)
 - **Order History:** Access the Order History section from the main menu to view past orders.
--**Real-Time Tracking:** Check the current status of your orders with real-time updates.
-- **Order Details:** Tap on any order to see a comprehensive breakdown of items, status, and tracking information.
+- **Real-Time Tracking:** Check the current status of your orders with real-time updates.
+-  **Order Details:** Tap on any order to see a comprehensive breakdown of items, status, and tracking information.
 ### Feedback and Support (User)
--**Accessing Support:** Navigate to the Support section via the main menu.
--**Submitting a Request:** Fill out the support form with your query or feedback.
--**Assistance:** Expect prompt follow-up from the support team for any issues encountered.
+- **Accessing Support:** Navigate to the Support section via the main menu.
+- **Submitting a Request:** Fill out the support form with your query or feedback.
+- **Assistance:** Expect prompt follow-up from the support team for any issues encountered.
 
 ### Contact Information
 Developer Support Email: support@babyshophub.com
