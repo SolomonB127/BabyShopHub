@@ -94,12 +94,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
           // TODO: Add Facebook sign in logic
         },
       },
-      {
-        "path": "../../../../assets/icon/instagram_icon.png",
-        "onTap": () {
-          // TODO: Add Instagram sign in logic
-        },
-      },
     ];
 
     return Wrap(

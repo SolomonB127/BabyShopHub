@@ -93,12 +93,6 @@ class _LoginScreenState extends State<LoginScreen> {
           // TODO: Add Facebook sign in logic
         },
       },
-      {
-        "path": "../../../../assets/icon/instagram_icon.png",
-        "onTap": () {
-          // TODO: Add Instagram sign in logic
-        },
-      },
     ];
 
     return Wrap(
