@@ -162,8 +162,8 @@ BabyShopHub is built using a layered architecture:
 - **Product Details**: Tap on a product to view detailed information including images, descriptions, and pricing.
 
 ### Managing Your Shopping Cart
--**Adding Items**: Tap the "Add to Cart" button on product pages to save items for purchase.
--**Viewing Cart:** Access your cart to review all selected items.
+- **Adding Items**: Tap the "Add to Cart" button on product pages to save items for purchase.
+- **Viewing Cart:** Access your cart to review all selected items.
 - **Editing Cart:** Update quantities or remove items as needed.
 
 ### Checkout Process
