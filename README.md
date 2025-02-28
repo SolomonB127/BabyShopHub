@@ -182,4 +182,4 @@ BabyShopHub is built using a layered architecture:
 
 ### Contact Information
 Developer Support Email: support@babyshophub.com
--*Non Existence*
+- *Non Existence*
