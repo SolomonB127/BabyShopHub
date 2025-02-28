@@ -123,7 +123,7 @@ BabyShopHub is built using a layered architecture:
 
 ### Product Browsing & Search
 -   **Product Categories:** Organized categorically (e.g., diapers, baby food, clothing, toys).
--   **Search Functionality:**Integrated search using Supabase queries to filter products by name, or category.
+-   **Search Functionality**: Integrated search using Supabase queries to filter products by name, or category.
 -   **Product Details Screen:** Displays product images, detailed descriptions, and pricing information.
 
 ### Shopping Cart & Checkout
@@ -135,7 +135,7 @@ BabyShopHub is built using a layered architecture:
 
 ### Order History & Tracking
 -   **Order History:** Maintain a log of all past orders with comprehensive details.
--   **Order Tracking:**Real-time tracking powered by Supabase subscriptions to update users on delivery status.
+-   **Order Tracking:** Real-time tracking powered by Supabase subscriptions to update users on delivery status.
 
 ### Feedback and Support
 -   **Support System:** In-app form for users to submit queries, report issues, and provide feedback.
@@ -151,6 +151,7 @@ BabyShopHub is built using a layered architecture:
   -  Navigate to the registration screen.
   -  Enter your name, email, and password.
   -  Complete any email verification steps if prompted.
+
 -   **Logging In**:
   -  Use your registered email and password.
   -  In case of forgotten credentials, utilize the password reset feature.
