@@ -1,6 +1,9 @@
 import 'package:baby_shop_hub/core/theme/app_colors.dart';
 import 'package:baby_shop_hub/data/services/auth_service.dart';
+import 'package:baby_shop_hub/presentation/screens/order-tracking/order_tracking.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:baby_shop_hub/provider/order_provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -33,20 +36,65 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: const Text("Profile"),
         automaticallyImplyLeading: false,
         actions: [
-          // Replace the logout icon with a user avatar widget
           UserAvatar(
             email: currentUser,
             onSignOut: logout,
           )
         ],
       ),
-      body: Center(child: Text(currentUser.toString())),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Email: $currentUser", style: const TextStyle(fontSize: 16)),
+              const SizedBox(height: 20),
+              const Text(
+                "Order History",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              Consumer<OrderProvider>(
+                builder: (context, orderProvider, child) {
+                  if (orderProvider.orders.isEmpty) {
+                    return const Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Text("No orders yet"),
+                    );
+                  }
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: orderProvider.orders.length,
+                    itemBuilder: (context, index) {
+                      final order = orderProvider.orders[index];
+                      return Card(
+                        child: ListTile(
+                          title:
+                              Text("Order ${order.id.substring(0, 8)}"),
+                          subtitle: Text(
+                            "Date: ${order.date.toLocal().toString().split(' ')[0]}\nStatus: ${order.status}",
+                          ),
+                          trailing:
+                              Text("\$${order.total.toStringAsFixed(2)}"),
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (_) => OrderTrackingScreen(order: order)));
+                          },
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
 
 /// A custom widget that shows the user's avatar as a circle with a popup menu.
-/// When tapped, it displays the user's email and a "Sign Out" option.
 class UserAvatar extends StatelessWidget {
   final String email;
   final VoidCallback? onSignOut;
@@ -60,7 +108,6 @@ class UserAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
-      // Display the first letter of the email in the avatar
       icon: CircleAvatar(
         backgroundColor: AppColors.primary,
         child: Text(
@@ -74,20 +121,17 @@ class UserAvatar extends StatelessWidget {
         }
       },
       itemBuilder: (context) => [
-        // Display the user's email as a disabled menu item
         PopupMenuItem(
           value: 'email',
           enabled: false,
           child: Text(email),
         ),
         const PopupMenuDivider(),
-        // Sign out menu item
         const PopupMenuItem(
           value: 'signOut',
           child: Text('Sign Out'),
         ),
       ],
     );
-
   }
 }
